@@ -100,6 +100,7 @@ def init_app():
             
             user_id = new_user.create_user()
             session["user_id"] = user_id
+            session["email_username"] = username
             return redirect(url_for('muro'))
         except Exception as e:
             return jsonify({"error": str(e)}), 500
