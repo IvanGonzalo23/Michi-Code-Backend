@@ -15,10 +15,15 @@ class User:
 
     def create_user(self):
         hashed_password = bcrypt.generate_password_hash(self.password).decode('utf-8')
-        query = "INSERT INTO michicode.usuarios(username, nombre, lastname, contrasenia, fecha_de_nacimiento, email) VALUES (%s, %s, %s, %s, %s, %s)"
+        query = "INSERT INTO michicode.usuarios(username, nombre, lastname, contrasenia, fecha_de_nacimiento, email) VALUES (%s, %s, %s, %s, %s, %s) "
         params = (self.username, self.name, self.lastname, hashed_password, self.fecha, self.email)
         try:
             DatabaseConnection.execute_query(query, params)
+            
+            user_id_query = "SELECT LAST_INSERT_ID()"
+            user_id = DatabaseConnection.fetch_one(user_id_query)[0]
+            
+            return user_id
         except Exception as e:
             raise e
     
@@ -30,12 +35,12 @@ class User:
             result = DatabaseConnection.fetch_one(query, params)
 
             if result is not None:
-                id, stored_email, stored_username, stored_password_hash = result
+                id_user, stored_email, stored_username, stored_password_hash = result
                 if (
                     stored_email == email_username or stored_username == email_username
                 ) and check_password_hash(stored_password_hash, contrasenia):
                     print("Éxito")
-                    return True,id
+                    return True,id_user
                 else:
                     print("Contraseña incorrecta")
             else:
@@ -45,4 +50,3 @@ class User:
             print("Error:", str(e))
 
         return False
-
