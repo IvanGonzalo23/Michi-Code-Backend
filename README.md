@@ -21,6 +21,11 @@ para utilizar el manejo de la app se debera utilizar un entorno virtual con los 
 * paso 4: Cuando se termine de usar el entorno desactivarlo de la siguiente manera: ```(nombre-del-entorno)\Scripts\deactivate```
 
 
+# DER de la base de datos
+[![Captura-de-pantalla-2023-09-27-013736.png](https://i.postimg.cc/wBPfjzSP/Captura-de-pantalla-2023-09-27-013736.png)](https://postimg.cc/7C3MKFPM)
+
+
+
 # Link para acceder al front de la app
 
 [Repositorio-Front](https://github.com/IvanGonzalo23/Michi-Code-Frontend)
