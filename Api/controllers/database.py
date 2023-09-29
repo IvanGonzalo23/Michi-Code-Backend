@@ -9,20 +9,12 @@ class DatabaseConnection:
             host="localhost",
             user="root",
             port=3306,
-            password="programacionII2023_",
+            password="root",
             database="michicode"
             )
         return cls._connection
     
     
-    @classmethod
-    def handle_error(cls, error_message):
-        """
-        Función para manejar errores de base de datos.
-        Puedes personalizar esta función para manejar los errores de la manera que prefieras.
-        En este ejemplo, simplemente imprime el mensaje de error.
-        """
-        print("Error en la base de datos:", error_message)
     
     @classmethod
     def execute_query(cls,query,params=None):

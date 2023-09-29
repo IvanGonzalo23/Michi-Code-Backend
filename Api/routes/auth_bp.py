@@ -1,6 +1,5 @@
 from flask import Blueprint,render_template
-from ..controllers.database import DatabaseConnection  
-from flask_bcrypt import check_password_hash
+from ..controllers.user_controller import UserController
 
 
 class AuthBlueprint:
@@ -9,12 +8,8 @@ class AuthBlueprint:
         self.configure_routes()
 
     def configure_routes(self):
-        @self.bp.route("/", methods=["GET", "POST"])
+        @self.bp.route("/", methods=["GET"])
         def index():
             return render_template("index.html")
-
-        @self.bp.route("/registro", methods=["GET"])
-        def form():
-            return render_template("form.html")
 
 
